@@ -14,11 +14,12 @@ def send_notification(old_ts, new_ts):
     requests.post(
         f"https://ntfy.sh/{NTFY_TOPIC}",
         headers={
-            "Title": "JP Meningsmålinger Opdateret! 📊",
+            "Title": "JP Meningsmaalinger Opdateret!",  # ✅ Removed emoji from header
             "Priority": "default",
-            "Tags": "bar_chart"
+            "Tags": "bar_chart",
+            "Content-Type": "text/plain; charset=utf-8"  # ✅ Added UTF-8 encoding
         },
-        data=f"Opdateret fra {old_ts} til {new_ts}"
+        data=f"Opdateret fra {old_ts} til {new_ts}".encode("utf-8")  # ✅ Encode data as UTF-8
     )
     print(f"✅ Notification sent! {old_ts} -> {new_ts}")
 
