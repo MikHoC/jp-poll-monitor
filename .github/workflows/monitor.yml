@@ -5,19 +5,22 @@ on:
     - cron: '0 * * * *'  # Run every hour
   workflow_dispatch:       # Allow manual runs
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true  # ✅ Force Node.js 24
+
 jobs:
   monitor:
     runs-on: ubuntu-latest
     
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4        # ✅ Updated from v3 to v4
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up Python
-        uses: actions/setup-python@v5   # ✅ Updated from v4 to v5
+        uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
