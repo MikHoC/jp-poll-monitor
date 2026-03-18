@@ -6,11 +6,13 @@ on:
   workflow_dispatch:       # Allow manual runs
 
 env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true  # ✅ Force Node.js 24
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
   monitor:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write      # ✅ Add this!
     
     steps:
       - name: Checkout repository
