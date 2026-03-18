@@ -11,13 +11,13 @@ jobs:
     
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4        # ✅ Updated from v3 to v4
         with:
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5   # ✅ Updated from v4 to v5
         with:
           python-version: '3.11'
 
